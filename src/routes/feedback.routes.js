@@ -7,8 +7,7 @@ import { upload } from "../middlewares/upload.middleware.js";
 const feedbackRouter = Router();
 
 feedbackRouter
-  .post("/", controller.create)
-  .get("/", protect, restrictTo("admin"), controller.getAll)
-  .post("/", upload.single("image"), controller.create);
+  .post("/", upload.single("image"), controller.create)
+  .get("/", protect, restrictTo("admin"), controller.getAll);
 
 export default feedbackRouter;

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodQR — Admin Panel</title>
+  <link rel="stylesheet" href="admin/css/admin.css" />
+</head>
+<body>
+
+  <div id="admin-app"></div>
+
+  <!-- Toast -->
+  <div id="admin-toast" class="a-toast"></div>
+
+  <!-- Modal overlay -->
+  <div id="modal-overlay" class="modal-overlay hidden" onclick="AdminModal.closeOnOverlay(event)">
+    <div class="modal" id="modal-box">
+      <div class="modal-header">
+        <h3 id="modal-title">Modal</h3>
+        <button class="modal-close" onclick="AdminModal.close()">&#10005;</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Confirm dialog -->
+  <div id="confirm-overlay" class="modal-overlay hidden">
+    <div class="modal" style="max-width:360px">
+      <div class="modal-header">
+        <h3>⚠️ Tasdiqlash</h3>
+        <button class="modal-close" onclick="AdminConfirm.cancel()">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-msg" style="color:var(--at);margin-bottom:24px;line-height:1.6"></p>
+        <div style="display:flex;gap:10px">
+          <button class="a-btn a-btn-danger a-btn-block" onclick="AdminConfirm.ok()">Ha, o'chirish</button>
+          <button class="a-btn a-btn-outline a-btn-block" onclick="AdminConfirm.cancel()">Bekor</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin/js/admin-api.js"></script>
+  <script src="admin/js/pages/login.js"></script>
+  <script src="admin/js/pages/dashboard.js"></script>
+  <script src="admin/js/pages/users.js"></script>
+  <script src="admin/js/pages/categories.js"></script>
+  <script src="admin/js/pages/products.js"></script>
+  <script src="admin/js/pages/feedbacks.js"></script>
+  <script src="admin/js/admin-app.js"></script>
+
+</body>
+</html>

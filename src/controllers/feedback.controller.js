@@ -1,19 +1,27 @@
 import { Feedback } from "../models/feedback.model.js";
 
-const create = async (req, res) => {
-  const feedback = await Feedback.create({
-    message: req.body.message,
-    type: req.body.type,
-    image: req.file ? req.file.filename : null,
-    device_info: req.headers["user-agent"],
-  });
+const create = async (req, res, next) => {
+  try {
+    const feedback = await Feedback.create({
+      message: req.body.message,
+      type: req.body.type,
+      image: req.file ? req.file.filename : null,
+      device_info: req.headers["user-agent"],
+    });
 
-  res.json(feedback);
+    res.status(201).json(feedback);
+  } catch (err) {
+    next(err);
+  }
 };
 
-const getAll = async (req, res) => {
-  const data = await Feedback.find();
-  res.json(data);
+const getAll = async (req, res, next) => {
+  try {
+    const data = await Feedback.find();
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
 };
 
 export default { create, getAll };
